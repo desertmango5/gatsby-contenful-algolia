@@ -8,10 +8,10 @@ import './index.css'
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Gatsby Default Starter"
+      title="Gatsby + Contentful + Algolia"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'description', content: 'A Gatsby site powered by Contentful CMS and Algolia search' },
+        { name: 'keywords', content: 'gatsby, contentful, algolia, search, blog, cms' },
       ]}
     />
     <Header />
