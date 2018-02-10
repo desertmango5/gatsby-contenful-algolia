@@ -1,13 +1,39 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Markdown from 'react-markdown'
+import '../styles/styles.scss'
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    {data.allContentfulBlogPost.edges.map(post => (
+      <div key={post.node.id}>
+        <p>{post.node.date}</p>
+        <h2>{post.node.title}</h2>
+        <Markdown 
+          source={post.node.content.content}
+        />
+      </div>
+    ))}
   </div>
 )
 
 export default IndexPage
+
+export const constentfulTest = graphql`
+  query TestQuery {
+    allContentfulBlogPost {
+      edges {
+        node {
+          id
+          title
+          slug
+          date(formatString: "MMM DD, YYYY")
+          content {
+            id
+            content
+          }
+        }
+      }
+    }
+  }
+`
